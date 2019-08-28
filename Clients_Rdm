@@ -1,0 +1,38 @@
+#!/bin/sh
+
+###Script de génération de la table clients###
+
+#Paramètres de base
+DB_User="root"
+DB_Password="Formation2019"
+DB_Name="VenteLicences"
+Initialisation=0
+IdClient=0
+
+#Randomizer
+#String aléatoire : $(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 10 | head -n 1)
+#Int aléatoire : $(cat /dev/urandom | tr -dc '0-9' | fold -w 5 | head -n 1)
+
+#Suppresion des données
+mysql --user=$DB_User --password=$DB_Password $DB_Name -e "DELETE from clients;"
+
+
+#Création des entrées logiciels
+
+echo "Combien de client voulez vous créer"
+read Nombre_Client
+while [ $Initialisation -ne $Nombre_Client ]
+do
+        IdClient=$(($IdClient + 1))
+        Internet="gmail.com"
+        Nom_Client=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 10 | head -n 1)
+        Prenom_Client=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 10 | head -n 1)
+        Email_Client=$Prenom_Client.$Nom_Client@$Internet
+        Adresse=$(cat /dev/urandom | tr -dc '0-9' | fold -w 2 | head -n 1)" "$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 20 | head -n 1)
+        Ville=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 6 | head -n 1)
+        CP=$(cat /dev/urandom | tr -dc '0-9' | fold -w 5 | head -n 1)
+        Initialisation=$(($Initialisation + 1))
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom, prenom, email, adresse, ville, CP) VALUES ('$IdClient', '$Nom_Client', '$Prenom_Client', '$Email_Client', '$Adresse', '$Ville', '$CP');"
+done
+~ 
+                                      
