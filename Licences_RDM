@@ -1,0 +1,25 @@
+#!/bin/sh
+
+###Script de génération de la table licences###
+
+#Paramètres de base
+DB_User="root"
+DB_Password="Formation2019"
+DB_Name="VenteLicences"
+Initialisation=0
+IdLicence=0
+
+#Suppresion des données
+mysql --user=$DB_User --password=$DB_Password $DB_Name -e "DELETE from licences;"
+
+echo "Combien de licences voulez vous créer"
+read Nombre_Licence
+while [ $Initialisation -ne $Nombre_Licence ]
+do
+        IdLicence=$(($IdLicence + 1))
+        Cle_Logiciel=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1)
+        Prix_Logiciel=$(cat /dev/urandom | tr -dc '0-9' | fold -w 3 | head -n 1)
+        Achete=$(cat /dev/urandom | tr -dc '0-1' | fold -w 1 | head -n 1)
+        IdLogiciels=$(cat /dev/urandom | tr -dc '0-9' | fold -w 1 | head -n 1)     
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO licences (id, cle, prix, acheté, id_logiciel) VALUES ('$IdLicence', '$Cle_Logiciel', '$Prix_Logiciel', '$Achete', '$IdLogiciels');"
+done
