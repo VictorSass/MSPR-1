@@ -20,4 +20,3 @@ mysql --user=$DB_User --password=$DB_Password $DB_Name -e "DELETE from logiciels
     mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO logiciels (id, nom) VALUES (7, 'Windows');"
     mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO logiciels (id, nom) VALUES (8, 'AIX');"
     mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO logiciels (id, nom) VALUES (9, 'Ubuntu');"
-    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO logiciels (id, nom) VALUES (10,'Debian');"

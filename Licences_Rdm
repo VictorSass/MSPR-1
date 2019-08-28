@@ -19,7 +19,8 @@ do
         IdLicence=$(($IdLicence + 1))
         Cle_Logiciel=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1)
         Prix_Logiciel=$(cat /dev/urandom | tr -dc '0-9' | fold -w 3 | head -n 1)
-        Achete=$(cat /dev/urandom | tr -dc '0-1' | fold -w 1 | head -n 1)
-        IdLogiciels=$(cat /dev/urandom | tr -dc '0-9' | fold -w 1 | head -n 1)     
+        Achete=0
+        IdLogiciels=$(cat /dev/urandom | tr -dc '1-9' | fold -w 1 | head -n 1)
+	Initialisation=$(($Initialisation + 1))     
     mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO licences (id, cle, prix, acheté, id_logiciel) VALUES ('$IdLicence', '$Cle_Logiciel', '$Prix_Logiciel', '$Achete', '$IdLogiciels');"
 done
