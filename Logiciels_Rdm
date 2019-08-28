@@ -1,0 +1,23 @@
+#!/bin/sh
+
+###Script de génération de la table logiciels###
+
+#Paramètres de base
+DB_User="root"
+DB_Password="Formation2019"
+DB_Name="VenteLicences"
+
+#Suppresion des données
+mysql --user=$DB_User --password=$DB_Password $DB_Name -e "DELETE from logiciels;"
+
+#Création des entrées logiciels
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom) VALUES (1, "Words");
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom) VALUES (2, "Excel");
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom) VALUES (3, "Powerpoint");
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom) VALUES (4, "Vmware");
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom) VALUES (5, "NotePad");
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom) VALUES (6, "RedHat");
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom) VALUES (7, "Windows");
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom) VALUES (8, "AIX");
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom) VALUES (9, "Ubuntu");
+    mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom) VALUES (10, "Debian");
