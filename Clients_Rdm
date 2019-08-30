@@ -33,6 +33,4 @@ do
         CP=$(cat /dev/urandom | tr -dc '0-9' | fold -w 5 | head -n 1)
         Initialisation=$(($Initialisation + 1))
     mysql --user=$DB_User --password=$DB_Password $DB_Name -e "INSERT INTO clients (id, nom, prenom, email, adresse, ville, CP) VALUES ('$IdClient', '$Nom_Client', '$Prenom_Client', '$Email_Client', '$Adresse', '$Ville', '$CP');"
-done
-~ 
-                                      
+done                                      
