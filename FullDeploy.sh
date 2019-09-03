@@ -16,6 +16,9 @@ systemctl status httpd.service
 systemctl status postfix.service
 systemctl status mariadb.service
 
+### Ouverture des flux apache
+firewall-cmd --add-service=http --permanent && sudo firewall-cmd --add service=https --permanent
+
 ### Lancement du script de création de la base de donnée
 sh CreationDB.sh
 sh Clients_Rdm
