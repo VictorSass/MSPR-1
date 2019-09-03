@@ -21,3 +21,8 @@ sh CreationDB.sh
 sh Clients_Rdm
 sh Logiciels_Rdm
 sh Licences_Rdm
+
+### Changement de l'index pour Apache
+mkdir /var/www/html/tptest.com/
+cp index.html /var/www/html/tptest.com/
+cp tptest.com.conf /etc/httpd/conf.d/tptest.com
